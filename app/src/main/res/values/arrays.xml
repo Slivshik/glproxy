@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="ui_mode_night">
+        <item>Follow System</item>
+        <item>Light</item>
+        <item>Dark</item>
+    </string-array>
+    <string-array name="vpn_bypass_lan">
+        <item>Disabled</item>
+        <item>Bypass LAN</item>
+        <item>Bypass LAN &amp; China</item>
+    </string-array>
+    <string-array name="policy_group_type">
+        <item>URL Test</item>
+        <item>Fallback</item>
+        <item>Load Balance</item>
+        <item>Select</item>
+    </string-array>
+    <string-array name="mode_entries">
+        <item>Proxy</item>
+        <item>VPN</item>
+        <item>Custom System Proxy</item>
+    </string-array>
+    <string-array name="mux_xudp_quic_entries">
+        <item>Default</item>
+        <item>Allow</item>
+        <item>Reject</item>
+    </string-array>
+    <string-array name="outbound_domain_resolve_method">
+        <item>IPv4 First</item>
+        <item>IPv6 First</item>
+        <item>IPv4 Only</item>
+        <item>IPv6 Only</item>
+    </string-array>
+    <string-array name="preset_rulesets">
+        <item>Bypass China</item>
+        <item>Global Proxy</item>
+        <item>Bypass LAN</item>
+    </string-array>
+    <string-array name="share_method">
+        <item>QR Code</item>
+        <item>Clipboard</item>
+    </string-array>
+    <string-array name="share_method_more">
+        <item>QR Code</item>
+        <item>Clipboard</item>
+        <item>Share</item>
+    </string-array>
+    <string-array name="share_sub_method">
+        <item>Share Link</item>
+        <item>Export File</item>
+    </string-array>
+    <string-array name="config_backup_options">
+        <item>Servers</item>
+        <item>Subscriptions</item>
+        <item>Settings</item>
+        <item>Routing Rules</item>
+    </string-array>
+
+    <string-array name="outbound_tag">
+        <item>proxy</item>
+        <item>direct</item>
+        <item>block</item>
+    </string-array>
+    <string-array name="ss_securitys">
+        <item>none</item>
+        <item>aes-256-gcm</item>
+        <item>aes-128-gcm</item>
+        <item>chacha20-poly1305</item>
+        <item>xchacha20-poly1305</item>
+        <item>2022-blake3-aes-256-gcm</item>
+        <item>2022-blake3-aes-128-gcm</item>
+        <item>2022-blake3-chacha20-poly1305</item>
+    </string-array>
+    <string-array name="flows">
+        <item></item>
+        <item>xtls-rprx-vision</item>
+        <item>xtls-rprx-vision-udp443</item>
+    </string-array>
+    <string-array name="securitys">
+        <item>auto</item>
+        <item>none</item>
+        <item>aes-128-gcm</item>
+        <item>chacha20-poly1305</item>
+        <item>zero</item>
+    </string-array>
+    <string-array name="streamsecurityxs">
+        <item>none</item>
+        <item>tls</item>
+        <item>reality</item>
+    </string-array>
+    <string-array name="streamsecuritys">
+        <item>none</item>
+        <item>tls</item>
+    </string-array>
+    <string-array name="streamsecurity_utls">
+        <item>none</item>
+        <item>chrome</item>
+        <item>firefox</item>
+        <item>safari</item>
+        <item>ios</item>
+        <item>android</item>
+        <item>edge</item>
+        <item>360</item>
+        <item>qq</item>
+        <item>random</item>
+        <item>randomized</item>
+    </string-array>
+    <string-array name="streamsecurity_alpn">
+        <item></item>
+        <item>h2</item>
+        <item>http/1.1</item>
+        <item>h2,http/1.1</item>
+    </string-array>
+    <string-array name="allowinsecures">
+        <item>false</item>
+        <item>true</item>
+    </string-array>
+    <string-array name="ech_force_query_value">
+        <item>false</item>
+        <item>true</item>
+    </string-array>
+    <string-array name="networks">
+        <item>tcp</item>
+        <item>kcp</item>
+        <item>ws</item>
+        <item>h2</item>
+        <item>quic</item>
+        <item>grpc</item>
+        <item>httpupgrade</item>
+        <item>xhttp</item>
+    </string-array>
+    <string-array name="language_select">
+        <item>Follow System</item>
+        <item>English</item>
+        <item>中文(简体)</item>
+        <item>中文(繁體)</item>
+        <item>فارسی</item>
+        <item>Русский</item>
+        <item>Français</item>
+        <item>Türkçe</item>
+    </string-array>
+    <string-array name="language_select_value">
+        <item></item>
+        <item>en</item>
+        <item>zh</item>
+        <item>zh-TW</item>
+        <item>fa</item>
+        <item>ru</item>
+        <item>fr</item>
+        <item>tr</item>
+    </string-array>
+    <string-array name="ui_mode_night_value">
+        <item>-1</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="vpn_bypass_lan_value">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="vpn_interface_address">
+        <item>10.0.0.1/24</item>
+        <item>172.19.0.1/28</item>
+        <item>192.168.100.1/24</item>
+        <item>fd00::1/126</item>
+    </string-array>
+    <string-array name="vpn_interface_address_value">
+        <item>10.0.0.1/24</item>
+        <item>172.19.0.1/28</item>
+        <item>192.168.100.1/24</item>
+        <item>fd00::1/126</item>
+    </string-array>
+    <string-array name="hev_tunnel_loglevel">
+        <item>debug</item>
+        <item>info</item>
+        <item>warn</item>
+        <item>error</item>
+    </string-array>
+
+    <string-array name="core_loglevel">
+        <item>none</item>
+        <item>error</item>
+        <item>warning</item>
+        <item>info</item>
+        <item>debug</item>
+    </string-array>
+    <string-array name="outbound_domain_resolve_method_value">
+        <item>IPIfNonMatch</item>
+        <item>AsIs</item>
+        <item>IPOnDemand</item>
+    </string-array>
+    <string-array name="mux_xudp_quic_value">
+        <item></item>
+        <item>allow</item>
+        <item>reject</item>
+    </string-array>
+    <string-array name="fragment_packets">
+        <item>tlshello</item>
+        <item>1-3</item>
+        <item>1-5</item>
+    </string-array>
+    <string-array name="mode_value">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="header_type_tcp">
+        <item>none</item>
+        <item>http</item>
+    </string-array>
+    <string-array name="header_type_kcp_and_quic">
+        <item>none</item>
+        <item>srtp</item>
+        <item>utp</item>
+        <item>wechat-video</item>
+        <item>dtls</item>
+        <item>wireguard</item>
+    </string-array>
+    <string-array name="mode_type_grpc">
+        <item>gun</item>
+        <item>multi</item>
+    </string-array>
+    <string-array name="xhttp_mode">
+        <item>auto</item>
+        <item>packet-up</item>
+        <item>stream-up</item>
+        <item>stream-one</item>
+    </string-array>
+    <string-array name="routing_domain_strategy">
+        <item>AsIs</item>
+        <item>IPIfNonMatch</item>
+        <item>IPOnDemand</item>
+    </string-array>
+</resources>

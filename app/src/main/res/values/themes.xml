@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base WLRUS Theme: Deep dark navy with electric cyan -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorSecondary">@color/colorAccent</item>
+        <item name="colorSecondaryVariant">@color/colorAccentDark</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorError">@color/colorError</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="colorOnSecondary">@color/colorPrimary</item>
+        <item name="colorOnBackground">@color/colorOnBackground</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+        <item name="colorOnError">@color/colorOnPrimary</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+        <item name="android:textColorPrimary">@color/colorOnBackground</item>
+        <item name="android:textColorSecondary">@color/colorTextSecondary</item>
+        <item name="android:textColorHint">@color/colorTextHint</item>
+        <item name="actionOverflowButtonStyle">@style/OverflowButtonStyle</item>
+        <item name="toolbarStyle">@style/WlrusToolbar</item>
+        <item name="materialButtonStyle">@style/WlrusButton</item>
+        <item name="floatingActionButtonStyle">@style/WlrusFab</item>
+        <item name="cardViewStyle">@style/WlrusCard</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Wlrus.MediumComponent</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.Wlrus.LargeComponent</item>
+    </style>
+
+    <!-- Toolbar -->
+    <style name="WlrusToolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="titleTextColor">@color/colorOnPrimary</item>
+        <item name="subtitleTextColor">@color/colorTextSecondary</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+
+    <!-- Primary button: cyan with dark text -->
+    <style name="WlrusButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:letterSpacing">0.05</item>
+    </style>
+
+    <!-- Outlined secondary button -->
+    <style name="WlrusButtonOutlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="cornerRadius">12dp</item>
+    </style>
+
+    <!-- FAB -->
+    <style name="WlrusFab" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="backgroundTint">@color/colorFab</item>
+        <item name="tint">@color/colorFabIcon</item>
+        <item name="rippleColor">@color/colorRipple</item>
+        <item name="elevation">8dp</item>
+    </style>
+
+    <!-- Card -->
+    <style name="WlrusCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/colorCardBackground</item>
+        <item name="cardElevation">2dp</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="strokeColor">@color/colorItemDivider</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <!-- Shapes -->
+    <style name="ShapeAppearance.Wlrus.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="ShapeAppearance.Wlrus.LargeComponent" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <!-- Overflow button (3 dots menu) -->
+    <style name="OverflowButtonStyle" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:tint">@color/colorOnPrimary</item>
+    </style>
+
+    <!-- Main connect button (large power button) -->
+    <style name="ConnectButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/colorSurfaceVariant</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="strokeColor">@color/colorAccent</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="cornerRadius">50dp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ConnectButtonStyle.Connected">
+        <item name="backgroundTint">@color/colorConnected</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+
+    <!-- Dialog -->
+    <style name="WlrusDialog" parent="ThemeOverlay.MaterialComponents.Dialog.Alert">
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+        <item name="android:windowBackground">@color/colorSurface</item>
+        <item name="buttonBarPositiveButtonStyle">@style/WlrusButton</item>
+    </style>
+
+    <!-- Text appearances -->
+    <style name="WlrusTextTitle" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">@color/colorOnBackground</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="WlrusTextBody" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textColor">@color/colorTextSecondary</item>
+    </style>
+
+    <style name="WlrusTextCaption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@color/colorTextHint</item>
+    </style>
+
+    <!-- Ping badge -->
+    <style name="PingBadgeGreen">
+        <item name="android:textColor">@color/colorSuccess</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="PingBadgeYellow">
+        <item name="android:textColor">@color/colorWarning</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="PingBadgeRed">
+        <item name="android:textColor">@color/colorError</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppThemeBase" parent="AppTheme" />
+    <style name="AppThemeBase.NoActionBar" parent="AppTheme" />
+    <style name="AppThemeBar" parent="AppTheme" />
+    <style name="BrandedSwitch" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="thumbTint">@color/colorAccent</item>
+        <item name="trackTint">@color/colorItemDivider</item>
+    </style>
+</resources>
