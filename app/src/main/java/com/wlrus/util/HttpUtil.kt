@@ -1,5 +1,6 @@
 ﻿package com.wlrus.util
 
+import android.content.Context
 import android.util.Log
 import com.wlrus.AppConfig
 import com.wlrus.AppConfig.LOOPBACK
@@ -18,6 +19,34 @@ import java.net.URI
 import java.net.URL
 
 object HttpUtil {
+
+    /**
+     * Device information for Happ-style headers
+     */
+    data class DeviceInfo(
+        val hwid: String,
+        val deviceModel: String = "${android.os.Build.BRAND}/${android.os.Build.MODEL}",
+        val deviceLocale: String = java.util.Locale.getDefault().toString(),
+        val verOs: String = "Android ${android.os.Build.VERSION.RELEASE}",
+        val userAgentMode: UserAgentMode = UserAgentMode.WLRUS
+    )
+
+    /**
+     * User Agent modes for different compatibility
+     */
+    enum class UserAgentMode {
+        WLRUS,          // Default WLRUS user agent
+        HAPP,           // Happ-style user agent
+        CUSTOM          // Custom user agent
+    }
+
+    /**
+     * Get default DeviceInfo with HWID
+     */
+    fun getDeviceInfo(context: Context): DeviceInfo {
+        val hwid = HwidUtil.getOrGenerateHwid(context)
+        return DeviceInfo(hwid = hwid)
+    }
 
     /**
      * Converts the domain part of a URL string to its IDN (Punycode, ASCII Compatible Encoding) format.
@@ -119,16 +148,24 @@ object HttpUtil {
     }
 
     /**
-     * Retrieves the content of a URL as a string with a custom User-Agent header.
+     * Retrieves the content of a URL as a string with a custom User-Agent header and Happ-style headers.
      *
      * @param url The URL to fetch content from.
+     * @param userAgent The User-Agent string (optional).
      * @param timeout The timeout value in milliseconds.
      * @param httpPort The HTTP port to use.
+     * @param deviceInfo Optional device info for Happ-style headers.
      * @return The content of the URL as a string.
      * @throws IOException If an I/O error occurs.
      */
     @Throws(IOException::class)
-    fun getUrlContentWithUserAgent(url: String?, userAgent: String?,  timeout: Int = 15000, httpPort: Int = 0): String {
+    fun getUrlContentWithUserAgent(
+        url: String?,
+        userAgent: String?,
+        timeout: Int = 15000,
+        httpPort: Int = 0,
+        deviceInfo: DeviceInfo? = null
+    ): String {
         var currentUrl = url
         var redirects = 0
         val maxRedirects = 3
@@ -136,12 +173,24 @@ object HttpUtil {
         while (redirects++ < maxRedirects) {
             if (currentUrl == null) continue
             val conn = createProxyConnection(currentUrl, httpPort, timeout, timeout) ?: continue
-            val finalUserAgent = if (userAgent.isNullOrBlank()) {
-                "WLRUS/${BuildConfig.VERSION_NAME}"
-            } else {
-                userAgent
+            
+            // Determine User-Agent
+            val finalUserAgent = when {
+                !userAgent.isNullOrBlank() -> userAgent
+                deviceInfo != null -> buildHappUserAgent(deviceInfo)
+                else -> "WLRUS/${BuildConfig.VERSION_NAME}"
             }
+            
             conn.setRequestProperty("User-agent", finalUserAgent)
+            
+            // Add Happ-style headers if deviceInfo is provided
+            deviceInfo?.let { info ->
+                conn.setRequestProperty("x-hwid", info.hwid)
+                conn.setRequestProperty("x-device-model", info.deviceModel)
+                conn.setRequestProperty("x-device-locale", info.deviceLocale)
+                conn.setRequestProperty("x-ver-os", info.verOs)
+            }
+            
             conn.connect()
 
             val responseCode = conn.responseCode
@@ -164,6 +213,17 @@ object HttpUtil {
             }
         }
         throw IOException("Too many redirects")
+    }
+
+    /**
+     * Build Happ-style User-Agent based on mode
+     */
+    private fun buildHappUserAgent(deviceInfo: DeviceInfo): String {
+        return when (deviceInfo.userAgentMode) {
+            UserAgentMode.HAPP -> "Happ/3.10.0"
+            UserAgentMode.WLRUS -> "WLRUS/${BuildConfig.VERSION_NAME}"
+            UserAgentMode.CUSTOM -> "WLRUS/${BuildConfig.VERSION_NAME}"
+        }
     }
 
     /**

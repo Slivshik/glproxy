@@ -24,6 +24,8 @@ import com.wlrus.util.HttpUtil
 import com.wlrus.util.JsonUtil
 import com.wlrus.util.QRCodeDecoder
 import com.wlrus.util.Utils
+import com.wlrus.util.CryptUtil
+import com.wlrus.util.HwidUtil
 import java.net.URI
 
 object AngConfigManager {
@@ -477,21 +479,65 @@ object AngConfigManager {
             Log.i(AppConfig.TAG, url)
             val userAgent = it.subscription.userAgent
 
+            // Check if URL is encrypted with wlrus://crypt/
+            var decryptedUrl: String? = null
+            if (CryptUtil.isCryptUrl(url)) {
+                decryptedUrl = CryptUtil.decrypt(url)
+                if (decryptedUrl == null) {
+                    Log.e(AppConfig.TAG, "Failed to decrypt subscription URL")
+                    return 0
+                }
+                Log.i(AppConfig.TAG, "Decrypted subscription URL successfully")
+            }
+
+            val actualUrl = decryptedUrl ?: url
+            
+            // Get device info for Happ-style headers
+            val deviceInfo = if (userAgent.isNullOrBlank()) {
+                // If no custom user agent, use default device info with WLRUS mode
+                HttpUtil.getDeviceInfo(Utils.getContext())
+            } else {
+                // Check if user agent looks like Happ's
+                val mode = if (userAgent.startsWith("Happ/")) {
+                    HttpUtil.UserAgentMode.HAPP
+                } else {
+                    HttpUtil.UserAgentMode.CUSTOM
+                }
+                HttpUtil.DeviceInfo(
+                    hwid = HwidUtil.getOrGenerateHwid(Utils.getContext()),
+                    userAgentMode = mode
+                )
+            }
+
             var configText = try {
                 val httpPort = SettingsManager.getHttpPort()
-                HttpUtil.getUrlContentWithUserAgent(url, userAgent, 15000, httpPort)
+                HttpUtil.getUrlContentWithUserAgent(actualUrl, userAgent, 15000, httpPort, deviceInfo)
             } catch (e: Exception) {
                 Log.e(AppConfig.ANG_PACKAGE, "Update subscription: proxy not ready or other error", e)
                 ""
             }
             if (configText.isEmpty()) {
                 configText = try {
-                    HttpUtil.getUrlContentWithUserAgent(url, userAgent)
+                    HttpUtil.getUrlContentWithUserAgent(actualUrl, userAgent, deviceInfo = deviceInfo)
                 } catch (e: Exception) {
                     Log.e(AppConfig.TAG, "Update subscription: Failed to get URL content with user agent", e)
                     ""
                 }
             }
+            
+            // Check if response is encrypted
+            if (CryptUtil.isCryptUrl(configText)) {
+                Log.i(AppConfig.TAG, "Response is encrypted, attempting decryption...")
+                val decryptedContent = CryptUtil.decrypt(configText)
+                if (decryptedContent != null) {
+                    configText = decryptedContent
+                    Log.i(AppConfig.TAG, "Successfully decrypted subscription content")
+                } else {
+                    Log.e(AppConfig.TAG, "Failed to decrypt subscription content")
+                    return 0
+                }
+            }
+            
             if (configText.isEmpty()) {
                 return 0
             }
