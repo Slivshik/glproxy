@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+    WLRUS Navigation Drawer Menu
+
+    SIMPLE MODE: Items tagged with group id="group_advanced" are hidden
+    when BuiltinSubscriptions.SIMPLE_MODE = true in MainActivity.kt
+-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- ── CORE (always visible) ───────────────────────────────────── -->
+    <group
+        android:id="@+id/group_core"
+        android:checkableBehavior="none">
+
+        <item
+            android:id="@+id/sub_setting"
+            android:icon="@drawable/ic_subscriptions_24dp"
+            android:title="@string/menu_subscriptions" />
+
+        <item
+            android:id="@+id/settings"
+            android:icon="@drawable/ic_settings_24dp"
+            android:title="@string/menu_settings" />
+
+    </group>
+
+    <!-- ── ADVANCED (hidden in SIMPLE_MODE) ───────────────────────── -->
+    <group
+        android:id="@+id/group_advanced"
+        android:checkableBehavior="none">
+
+        <item
+            android:id="@+id/user_asset_setting"
+            android:icon="@drawable/ic_file_24dp"
+            android:title="@string/menu_user_assets"
+            android:visible="true" />
+
+        <item
+            android:id="@+id/routing_setting"
+            android:icon="@drawable/ic_routing_24dp"
+            android:title="@string/menu_routing"
+            android:visible="true" />
+
+        <item
+            android:id="@+id/logcat"
+            android:icon="@drawable/ic_logcat_24dp"
+            android:title="@string/menu_logcat"
+            android:visible="true" />
+
+        <item
+            android:id="@+id/backup_settings"
+            android:icon="@drawable/ic_backup_24dp"
+            android:title="@string/menu_backup_restore"
+            android:visible="true" />
+
+    </group>
+
+    <!-- ── DIVIDER ─────────────────────────────────────────────────── -->
+    <group android:checkableBehavior="none">
+
+        <item
+            android:id="@+id/check_update"
+            android:icon="@drawable/ic_check_update_24dp"
+            android:title="@string/menu_update" />
+
+        <item
+            android:id="@+id/about"
+            android:icon="@drawable/ic_about_24dp"
+            android:title="@string/menu_about" />
+
+        <item
+            android:id="@+id/feedback"
+            android:icon="@drawable/ic_feedback_24dp"
+            android:title="@string/menu_feedback" />
+
+    </group>
+
+
+    <item android:id="@+id/per_app_proxy_settings" android:title="@string/title_pref_per_app_proxy" />
+    <item android:id="@+id/promotion"              android:title="@string/menu_promotion" />
+    <item android:id="@+id/check_for_update"       android:title="@string/menu_check_update" />
+    <item android:id="@+id/backup_restore"         android:title="@string/menu_backup_restore" />
+</menu>
