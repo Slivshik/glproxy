@@ -1,5 +1,6 @@
 ﻿package com.wlrus.util
 
+import android.app.Application
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
@@ -19,6 +20,7 @@ import androidx.core.net.toUri
 import com.wlrus.AppConfig
 import com.wlrus.AppConfig.LOOPBACK
 import com.wlrus.BuildConfig
+import com.wlrus.WlrusApplication
 import java.io.IOException
 import java.net.InetAddress
 import java.net.ServerSocket
@@ -31,6 +33,14 @@ import java.util.Locale
 import java.util.UUID
 
 object Utils {
+
+    /**
+     * Get the application context.
+     * @return The application context.
+     */
+    fun getContext(): Context {
+        return WlrusApplication.application.applicationContext
+    }
 
     private val IPV4_REGEX =
         Regex("^([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\\.([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\\.([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\\.([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])$")

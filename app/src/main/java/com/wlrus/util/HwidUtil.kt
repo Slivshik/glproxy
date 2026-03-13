@@ -4,6 +4,7 @@ import android.content.Context
 import android.provider.Settings
 import android.util.Log
 import com.wlrus.AppConfig
+import com.wlrus.handler.MmkvManager
 import java.nio.charset.StandardCharsets
 import java.security.MessageDigest
 import java.util.UUID
