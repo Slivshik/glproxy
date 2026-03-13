@@ -1,0 +1,6 @@
+# local.properties — NOT committed to git (add to .gitignore)
+# Windows path example (use forward slashes or escape backslashes):
+sdk.dir=C\:\\Users\\YOUR_USERNAME\\AppData\\Local\\Android\\Sdk
+
+# If you have NDK installed separately:
+# ndk.dir=C\:\\Users\\YOUR_USERNAME\\AppData\\Local\\Android\\Sdk\\ndk\\26.x.x
