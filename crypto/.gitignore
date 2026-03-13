@@ -1,0 +1,9 @@
+# Crypt keys - NEVER commit these to version control
+keys/*.enc.json
+keys/crypt_keys_config.php
+keys/CryptKeys.kt
+keys/.env
+
+# Keep only templates
+!keys/.env.example
+!keys/public_keys.json
