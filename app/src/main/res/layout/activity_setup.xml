@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground">
+
+    <!-- Selection screen -->
+    <ScrollView
+        android:id="@+id/screenSelection"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:paddingStart="28dp"
+            android:paddingEnd="28dp"
+            android:paddingTop="56dp"
+            android:paddingBottom="40dp">
+
+            <!-- Logo -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="WLRUS"
+                android:textSize="42sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent"
+                android:letterSpacing="0.15"
+                android:fontFamily="@font/montserrat_thin" />
+
+            <View
+                android:layout_width="48dp"
+                android:layout_height="3dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="36dp"
+                android:background="@color/colorAccent" />
+
+            <!-- Welcome -->
+            <TextView
+                android:id="@+id/tvSetupTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Добро пожаловать"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorOnBackground"
+                android:gravity="center"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
+                android:id="@+id/tvSetupQuestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Как вы хотите использовать приложение?"
+                android:textSize="15sp"
+                android:textColor="@color/colorTextSecondary"
+                android:gravity="center"
+                android:lineSpacingMultiplier="1.45"
+                android:layout_marginBottom="32dp" />
+
+            <!-- Mode Cards -->
+            <LinearLayout
+                android:id="@+id/selectionContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- VPN Card -->
+                <LinearLayout
+                    android:id="@+id/cardVpn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="20dp"
+                    android:layout_marginBottom="14dp"
+                    android:background="@drawable/setup_card_default"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:gravity="center"
+                        android:text="🌐"
+                        android:textSize="26sp"
+                        android:layout_marginEnd="16dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Просто ВПН"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorOnBackground" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Весь трафик через прокси"
+                            android:textSize="13sp"
+                            android:textColor="@color/colorTextSecondary"
+                            android:layout_marginTop="3dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/checkVpn"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:background="@drawable/setup_check_off"
+                        android:layout_marginStart="12dp" />
+                </LinearLayout>
+
+                <!-- Whitelist Card -->
+                <LinearLayout
+                    android:id="@+id/cardWhitelist"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="20dp"
+                    android:layout_marginBottom="28dp"
+                    android:background="@drawable/setup_card_default"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:gravity="center"
+                        android:text="🇷🇺"
+                        android:textSize="26sp"
+                        android:layout_marginEnd="16dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Обход белых списков"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorOnBackground" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Только заблокированные сайты через прокси"
+                            android:textSize="13sp"
+                            android:textColor="@color/colorTextSecondary"
+                            android:layout_marginTop="3dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/checkWhitelist"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:background="@drawable/setup_check_off"
+                        android:layout_marginStart="12dp" />
+                </LinearLayout>
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorItemDivider"
+                    android:layout_marginBottom="24dp" />
+
+                <!-- Beginner mode -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Режим интерфейса"
+                    android:textSize="13sp"
+                    android:textColor="@color/colorTextHint"
+                    android:textAllCaps="true"
+                    android:letterSpacing="0.08"
+                    android:layout_marginBottom="12dp" />
+
+                <LinearLayout
+                    android:id="@+id/cardBeginner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="18dp"
+                    android:layout_marginBottom="28dp"
+                    android:background="@drawable/setup_card_default"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:gravity="center"
+                        android:text="🎓"
+                        android:textSize="24sp"
+                        android:layout_marginEnd="16dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Режим для новичков"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorOnBackground" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Скрыть сложные настройки"
+                            android:textSize="12sp"
+                            android:textColor="@color/colorTextSecondary"
+                            android:layout_marginTop="3dp" />
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switchBeginner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:thumbTint="@color/colorAccent"
+                        android:trackTint="@color/colorItemDivider" />
+                </LinearLayout>
+
+                <!-- Continue Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnContinue"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="Продолжить"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:enabled="false"
+                    android:alpha="0.35"
+                    style="@style/WlrusButton" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Progress screen (hidden initially) -->
+    <LinearLayout
+        android:id="@+id/screenProgress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="40dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WLRUS"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorAccent"
+            android:letterSpacing="0.15"
+            android:layout_marginBottom="32dp" />
+
+        <ProgressBar
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:indeterminateTint="@color/colorAccent"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:id="@+id/tvSetupStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Загрузка…"
+            android:textSize="15sp"
+            android:textColor="@color/colorOnSurface"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.4" />
+    </LinearLayout>
+
+</FrameLayout>

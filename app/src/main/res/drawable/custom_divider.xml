@@ -1,13 +1,9 @@
-<!-- res/drawable/custom_divider.xml -->
+<?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:bottom="0dp"
-        android:left="16dp"
-        android:right="16dp"
-        android:top="0dp">
+    <item android:left="16dp" android:right="16dp">
         <shape>
             <size android:height="1dp" />
-            <solid android:color="@color/divider_color_light" />
+            <solid android:color="#1A2D4A" />
         </shape>
     </item>
 </layer-list>

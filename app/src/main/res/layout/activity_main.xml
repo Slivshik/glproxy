@@ -8,12 +8,15 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            app:elevation="0dp">
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
@@ -25,7 +28,11 @@
                 android:id="@+id/tabGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone" />
+                android:visibility="gone"
+                app:tabIndicatorColor="@color/colorAccent"
+                app:tabSelectedTextColor="@color/colorAccent"
+                app:tabTextColor="@color/colorTextSecondary"
+                app:tabBackground="@color/colorPrimary" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -35,25 +42,62 @@
             android:orientation="vertical"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+            <!-- Status + test bar -->
             <LinearLayout
                 android:id="@+id/layoutTest"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="52dp"
                 android:orientation="horizontal"
-                android:padding="8dp"
+                android:gravity="center_vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="8dp"
+                android:background="@color/colorSurface"
                 android:clickable="true"
                 android:focusable="true">
 
+                <!-- Status dot -->
+                <View
+                    android:id="@+id/viewStatusDot"
+                    android:layout_width="9dp"
+                    android:layout_height="9dp"
+                    android:background="@drawable/ic_circle"
+                    android:backgroundTint="@color/colorDisconnected"
+                    android:layout_marginEnd="10dp" />
+
+                <!-- Status text -->
                 <TextView
                     android:id="@+id/tvTestState"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Not Connected" />
+                    android:text="Не подключено"
+                    android:textSize="14sp"
+                    android:textColor="@color/colorOnSurface" />
+
+                <!-- Test latency button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnTestLatency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:text="@string/test_latency"
+                    android:textSize="12sp"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    app:cornerRadius="18dp"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    app:strokeColor="@color/colorItemDivider"
+                    android:textColor="@color/colorTextSecondary"
+                    android:visibility="gone" />
 
             </LinearLayout>
 
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorItemDivider" />
+
+            <!-- Server list -->
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewPager"
                 android:layout_width="match_parent"
@@ -62,14 +106,27 @@
 
         </LinearLayout>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <!-- Connect FAB - pill button, TV-focusable -->
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/fab"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="16dp"
-            android:contentDescription="Start"
-            app:srcCompat="@drawable/ic_play_24dp" />
+            android:layout_height="56dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="@dimen/fab_margin_normal"
+            android:paddingStart="36dp"
+            android:paddingEnd="36dp"
+            android:text="@string/tasker_start_service"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:contentDescription="Connect"
+            app:backgroundTint="@color/colorAccent"
+            app:icon="@drawable/ic_play_24dp"
+            app:iconTint="@color/colorPrimary"
+            app:elevation="10dp"
+            app:cornerRadius="28dp" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
