@@ -1,4 +1,4 @@
-﻿// WLRUS app/build.gradle.kts
+// WLRUS app/build.gradle.kts
 
 plugins {
     id("com.android.application")
@@ -47,7 +47,9 @@ android {
 
     sourceSets {
         getByName("main") {
-            jniLibs.srcDirs("libs")
+            // Native .so files: app/src/main/jniLibs/<abi>/
+            jniLibs.srcDirs("src/main/jniLibs")
+            // AAR/JAR libs: app/libs/
         }
     }
 
@@ -71,6 +73,10 @@ android {
     packaging {
         resources {
             excludes += setOf("META-INF/INDEX.LIST", "META-INF/*.SF", "META-INF/*.DSA")
+        }
+        // Prevent duplicate .so files from conflicting between AAR and jniLibs
+        jniLibs {
+            useLegacyPackaging = false
         }
     }
 }
@@ -100,28 +106,19 @@ dependencies {
     implementation("com.google.zxing:core:3.5.3")
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
 
-    // WebDAV for backup — sardine-android is only on JitPack, not Maven Central
+    // WebDAV for backup
     implementation("com.github.thegrizzlylabs:sardine-android:0.9")
 
-    // V2Ray/Xray core — libv2ray.aar from AndroidLibXrayLite
+    // V2Ray/Xray core — place real libv2ray.aar into app/libs/
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.aar", "*.jar"))))
 
-    // SwipeRefreshLayout
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
-
-    // Toasty (styled toasts)
     implementation("com.github.GrenderG:Toasty:1.5.2")
-
-    // Code editor (blacksquircle) for custom config
     implementation("com.blacksquircle.ui:editorkit:2.9.0")
     implementation("com.blacksquircle.ui:language-json:2.9.0")
-
-    // QR / Barcode scanner (newer API used in ScannerActivity)
     implementation("io.github.g00fy2.quickie:quickie-bundled:1.9.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
 }
-
-// Additional dependencies required by v2rayNG source
