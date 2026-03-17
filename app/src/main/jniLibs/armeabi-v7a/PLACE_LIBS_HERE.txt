@@ -1,0 +1,7 @@
+Place the following .so files for armeabi-v7a here:
+
+  libhev-socks5-tunnel.so   — from https://github.com/heiher/hev-socks5-tunnel
+  libv2ray.so               — from https://github.com/2dust/AndroidLibXrayLite
+  libv2ray.aar              — DO NOT place here, the real one goes in app/libs/
+
+Both .so files must be the armeabi-v7a ABI build.
